@@ -13,6 +13,15 @@ router.get('/', (req, res, next) => { // /celebrities/
   }).catch(err => next(err));
 });
 
+/* GET celebrities details page */
+router.get('/:id', (req, res, next) => {
+  Celebrity.findById(req.params.id).then(function (celebrity) {
+    res.render('celebrities/show', {
+      celebrities: celebrity
+    });
+  }).catch(err => next(err));
+});
+
 // router.get('/add', function () {}) // /celebrities/add
 
 module.exports = router;
